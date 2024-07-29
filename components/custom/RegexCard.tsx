@@ -26,7 +26,7 @@ export const RegexCard: React.FC<RegexCardProps> = ({
     <div className="py-4 px-8 rounded-md shadow-md">
       <h2 className="text-xl font-bold w-full font-mono">{title}</h2>
       <h3 className="text-md text-gray-400 mb-2">{description}</h3>
-      <div className="border rounded-md flex items-center cursor-pointer justify-between py-2 px-2 group">
+      <div className="border relative rounded-md flex items-center justify-between py-2 px-2 group overflow-hidden">
         <RegexHighlighter regex={regex} />
         <TooltipProvider>
           <Tooltip>
@@ -34,8 +34,8 @@ export const RegexCard: React.FC<RegexCardProps> = ({
               {" "}
               <CopyIcon
                 onClick={() => copy(regex)}
-                size="32px"
-                className="text-gray-300 p-1 rounded-md hover:bg-gray-100 hover:text-gray-700 transition-all duration-200 hover:scale-110"
+                size="48px"
+                className="text-gray-400 bg-gray-100 absolute right-0 inset-y-0 h-full py-1 px-3 hover:bg-gray-100 hover:text-gray-700 transition-all duration-200 hover:scale-110"
               />
             </TooltipTrigger>
             <TooltipContent>
