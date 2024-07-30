@@ -1,4 +1,5 @@
 import { useCopyToClipboard } from "@/lib/hooks/copy";
+import { motion } from "framer-motion";
 import { Check, Copy } from "lucide-react";
 import React from "react";
 import {
@@ -15,6 +16,11 @@ type RegexCardProps = {
   description: string;
 };
 
+const item = {
+  hidden: { opacity: 0, y: 100 },
+  show: { opacity: 1, y: 0 },
+};
+
 export const RegexCard: React.FC<RegexCardProps> = ({
   regex,
   title,
@@ -23,7 +29,7 @@ export const RegexCard: React.FC<RegexCardProps> = ({
   const [_, isCopied, copy] = useCopyToClipboard();
   const CopyIcon = isCopied ? Check : Copy;
   return (
-    <div className="py-4 px-8 rounded-md shadow-md">
+    <motion.div variants={item} className="py-4 px-8 rounded-md shadow-md">
       <h2 className="text-xl font-bold w-full font-mono">{title}</h2>
       <h3 className="text-md text-gray-400 mb-2">{description}</h3>
       <div className="border relative rounded-md flex items-center justify-between py-2 px-2 group overflow-hidden">
@@ -44,6 +50,6 @@ export const RegexCard: React.FC<RegexCardProps> = ({
           </Tooltip>
         </TooltipProvider>
       </div>
-    </div>
+    </motion.div>
   );
 };

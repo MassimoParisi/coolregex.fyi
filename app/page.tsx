@@ -1,5 +1,16 @@
 "use client";
 import { RegexCard } from "@/components/custom/RegexCard";
+import { animate, motion } from "framer-motion";
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
 
 export default function Home() {
   return (
@@ -12,7 +23,12 @@ export default function Home() {
               fyi
             </span>
           </h1>
-          <div className="flex flex-col gap-8">
+          <motion.div
+            className="flex flex-col gap-8"
+            variants={container}
+            initial="hidden"
+            animate="show"
+          >
             <RegexCard
               regex="^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$"
               title="Password Strength"
@@ -60,7 +76,7 @@ export default function Home() {
               title="Slug"
               description="Matches slugs (strings with only lowercase letters, numbers, and hyphens)."
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </main>
