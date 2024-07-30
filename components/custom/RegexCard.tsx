@@ -40,7 +40,7 @@ export const RegexCard: React.FC<RegexCardProps> = ({
   return (
     <motion.div
       variants={item}
-      className="py-4 px-8 rounded-md shadow-md overflow-hidden"
+      className="py-4 px-8 rounded-md shadow-md overflow-hidden bg-white"
     >
       <div className="flex justify-between items-center">
         <div className="flex flex-col">
