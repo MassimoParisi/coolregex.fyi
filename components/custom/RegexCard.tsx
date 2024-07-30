@@ -2,6 +2,7 @@ import { useCopyToClipboard } from "@/lib/hooks/copy";
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, Copy, FlaskConical } from "lucide-react";
 import React, { useState } from "react";
+import { toast } from "sonner";
 import { Input } from "../ui/input";
 import {
   Tooltip,
@@ -67,7 +68,9 @@ export const RegexCard: React.FC<RegexCardProps> = ({
             <TooltipTrigger>
               {" "}
               <CopyIcon
-                onClick={() => copy(regex)}
+                onClick={() => {
+                  copy(regex), toast.info("Copied regex to clipboard!");
+                }}
                 size="48px"
                 className="text-gray-400 bg-gray-100 absolute right-0 inset-y-0 h-full py-1 px-3 hover:bg-gray-100 hover:text-gray-700 transition-all duration-200 hover:scale-110"
               />

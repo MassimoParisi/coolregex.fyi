@@ -1,6 +1,6 @@
 "use client";
 import { RegexCard } from "@/components/custom/RegexCard";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const container = {
   hidden: { opacity: 0 },
