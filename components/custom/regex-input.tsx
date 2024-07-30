@@ -100,10 +100,10 @@ const RegexHighlighter: React.FC<{ regex: string }> = ({ regex }) => {
   return (
     <div
       id="regex-highlight"
-      className="w-full p-2 flex rounded pointer-events-none z-0 whitespace-pre-wrap break-words"
+      className="w-full p-2 flex rounded pointer-events-none z-0 whitespace-pre-wrap break-words overflow-x-scroll"
     >
       {highlight}
-      <div className="h-full w-[10rem] bg-black" />
+      <div className="h-[1px] min-w-[10rem] w-[10rem]" />
     </div>
   );
 };
