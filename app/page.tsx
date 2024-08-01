@@ -17,7 +17,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between md:p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <div className="p-4 w-full">
-          <h1 className="text-3xl text-center font-bold -mt-16 mb-16 w-full font-mono">
+          <h1 className="text-3xl text-center font-bold mt-8 md:-mt-16 mb-16 w-full font-mono">
             coolregex.
             <span className="underline underline-offset-4 decoration-wavy decoration-yellow-300">
               fyi
