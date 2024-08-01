@@ -61,25 +61,28 @@ export const RegexCard: React.FC<RegexCardProps> = ({
           </Tooltip>
         </TooltipProvider>
       </div>
-      <div className="border relative rounded-md flex items-center justify-between py-2 px-2 group overflow-hidden">
+      <div className="border relative rounded-md flex items-center justify-between py-2 px-2 group overflow-scroll">
         <RegexHighlighter regex={regex} />
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger>
-              {" "}
-              <CopyIcon
-                onClick={() => {
-                  copy(regex), toast.info("Copied regex to clipboard!");
-                }}
-                size="48px"
-                className="text-gray-400 bg-gray-100 absolute right-0 inset-y-0 h-full py-1 px-3 hover:bg-gray-100 hover:text-gray-700 transition-all duration-200 hover:scale-110"
-              />
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Copy to clipboard</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <div className="absolute flex gap-0 right-0 inset-y-0 h-full">
+          <div className="h-full w-8 -mr-1 bg-white backdrop-gradient-blur" />
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger className="h-full">
+                {" "}
+                <CopyIcon
+                  onClick={() => {
+                    copy(regex), toast.info("Copied regex to clipboard!");
+                  }}
+                  size="48px"
+                  className="text-gray-400 bg-gray-100 py-1 px-3 h-full hover:bg-gray-100 hover:text-gray-700 transition-all duration-200 hover:scale-110"
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Copy to clipboard</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
       </div>
       <AnimatePresence>
         {openTestSection && (

@@ -66,4 +66,10 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .backdrop-gradient-blur {
+    -webkit-mask: linear-gradient(to left, white, transparent);
+    mask: linear-gradient(to left, white transparent);
+    backdrop-filter: blur(10px);
+  }
 }
