@@ -1,5 +1,6 @@
 "use client";
 import { RegexCard } from "@/components/custom/RegexCard";
+import { regexInfo } from "@/lib/regex_info";
 import { motion } from "framer-motion";
 
 const container = {
@@ -17,7 +18,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between md:p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <div className="p-4 w-full">
-          <h1 className="text-3xl text-center font-bold mt-8 md:-mt-16 mb-16 w-full font-mono">
+          <h1 className="text-3xl text-center font-bold mt-8 md:-mt-16 mb-8 w-full font-mono">
             coolregex.
             <span className="underline underline-offset-4 decoration-wavy decoration-yellow-300">
               fyi
@@ -29,13 +30,15 @@ export default function Home() {
             initial="hidden"
             animate="show"
           >
-            <RegexCard
-              regex="^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$"
-              title="Password Strength"
-              description="at least 8 characters, one uppercase, one lowercase, one number, one
-        special character"
-            />
-            <RegexCard
+            {regexInfo.map((info) => (
+              <RegexCard
+                key={info.regex}
+                regex={info.regex}
+                title={info.title}
+                description={info.description}
+              />
+            ))}
+            {/* <RegexCard
               regex="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$"
               title="Email Address"
               description="Validates a typical email address."
@@ -61,11 +64,6 @@ export default function Home() {
               title="Extracting HTML Tags"
               description="Matches and extracts HTML tags and their contents."
             />
-            {/* <RegexCard
-              regex="^((?!219-09-9999|078-05-1120)(?!666|000|9\d{2})\d{3}-(?!00)\d{2}-(?!0{4})\d{4})|((?!219 09 9999|078 05 1120)(?!666|000|9\d{2})\d{3} (?!00)\d{2} (?!0{4})\d{4})|((?!219099999|078051120)(?!666|000|9\d{2})\d{3}(?!00)\d{2}(?!0{4})\d{4})$"
-              title="Social Security Number"
-              description="Matches Social Security Numbers (SSN)."
-            /> */}
             <RegexCard
               regex="^[A-PR-WY][1-9]\d\s?\d{4}[1-9]$"
               title="Passport Number"
@@ -75,7 +73,7 @@ export default function Home() {
               regex="^[a-z0-9]+(?:-[a-z0-9]+)*$"
               title="Slug"
               description="Matches slugs (strings with only lowercase letters, numbers, and hyphens)."
-            />
+            /> */}
           </motion.div>
         </div>
       </div>
