@@ -5,6 +5,7 @@ import { Check, Copy, FlaskConical } from "lucide-react";
 import React, { useState } from "react";
 import { toast } from "sonner";
 import { Input } from "../ui/input";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import {
   Tooltip,
   TooltipContent,
@@ -63,7 +64,7 @@ export const RegexCard: React.FC<RegexCardProps> = ({
           </Tooltip>
         </TooltipProvider>
       </div>
-      <div className="border relative rounded-md flex items-center justify-between py-2 px-2 group overflow-scroll">
+      <ScrollArea className="border relative rounded-md flex items-center justify-between py-2 px-2 group">
         <RegexHighlighter regex={regex} />
         <div className="absolute flex gap-0 right-0 inset-y-0 h-full">
           <div className="h-full w-8 -mr-1 bg-white backdrop-gradient-blur" />
@@ -85,7 +86,8 @@ export const RegexCard: React.FC<RegexCardProps> = ({
             </Tooltip>
           </TooltipProvider>
         </div>
-      </div>
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
       <AnimatePresence>
         {openTestSection && (
           <motion.div
