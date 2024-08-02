@@ -1,4 +1,5 @@
 import { useCopyToClipboard } from "@/lib/hooks/copy";
+import { RegexInfo } from "@/lib/regex_info";
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, Copy, FlaskConical } from "lucide-react";
 import React, { useState } from "react";
@@ -12,11 +13,7 @@ import {
 } from "../ui/tooltip";
 import RegexHighlighter from "./regex-input";
 
-type RegexCardProps = {
-  regex: string;
-  title: string;
-  description: string;
-};
+type RegexCardProps = RegexInfo;
 
 const item = {
   hidden: { opacity: 0, y: 100 },
@@ -27,6 +24,7 @@ export const RegexCard: React.FC<RegexCardProps> = ({
   regex,
   title,
   description,
+  icon,
 }) => {
   const [_, isCopied, copy] = useCopyToClipboard();
   const [testString, setTestString] = useState("");
@@ -37,6 +35,7 @@ export const RegexCard: React.FC<RegexCardProps> = ({
   const isMatch = testRegex.test(testString);
 
   const CopyIcon = isCopied ? Check : Copy;
+  const RegexIcon = icon;
 
   return (
     <motion.div
@@ -45,7 +44,10 @@ export const RegexCard: React.FC<RegexCardProps> = ({
     >
       <div className="flex justify-between items-center">
         <div className="flex flex-col">
-          <h2 className="text-xl font-bold w-full font-mono">{title}</h2>
+          <div className="flex gap-4 items-center">
+            <RegexIcon className="w-6 h-6 text-gray-400" />
+            <h2 className="text-xl font-bold w-full font-mono">{title}</h2>
+          </div>
           <h3 className="text-md text-gray-400 mb-2">{description}</h3>
         </div>
         <TooltipProvider>

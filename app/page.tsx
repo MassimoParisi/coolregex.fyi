@@ -1,7 +1,9 @@
 "use client";
+import { CommandBar } from "@/components/custom/command-bar";
 import { RegexCard } from "@/components/custom/RegexCard";
 import { regexInfo } from "@/lib/regex_info";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const container = {
   hidden: { opacity: 0 },
@@ -14,6 +16,17 @@ const container = {
 };
 
 export default function Home() {
+  const [search, setSearch] = useState("");
+
+  const filteredRegexInfo = search
+    ? regexInfo.filter(
+        (info) =>
+          info.regex.includes(search) ||
+          info.title.toLowerCase().includes(search.toLowerCase()) ||
+          info.description.toLowerCase().includes(search.toLowerCase())
+      )
+    : regexInfo;
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between md:p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -24,18 +37,24 @@ export default function Home() {
               fyi
             </span>
           </h1>
+          <CommandBar
+            search={search}
+            setSearch={setSearch}
+            filteredRegexInfo={filteredRegexInfo}
+          />
           <motion.div
             className="flex flex-col gap-8"
             variants={container}
             initial="hidden"
             animate="show"
           >
-            {regexInfo.map((info) => (
+            {filteredRegexInfo.map((info) => (
               <RegexCard
                 key={info.regex}
                 regex={info.regex}
                 title={info.title}
                 description={info.description}
+                icon={info.icon}
               />
             ))}
             {/* <RegexCard
