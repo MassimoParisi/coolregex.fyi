@@ -21,7 +21,7 @@ export default async function Image() {
       <div
         style={{
           backgroundColor: "#FEF9C3",
-          fontSize: 128,
+          fontSize: 256,
           width: "100%",
           height: "100%",
           display: "flex",
@@ -45,6 +45,7 @@ export default async function Image() {
             style={{
               width: "32px",
               height: "32px",
+              color: "black",
               border: "2px solid #FFD700",
               borderRadius: "0.375rem",
               padding: "0.125rem",
